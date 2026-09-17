@@ -14,6 +14,8 @@ type Db = { ranks: Record<string, string>; teams: Team[]; lfg: Lfg[]; warnings: 
 const token = process.env.DISCORD_TOKEN;
 const clientId = process.env.DISCORD_CLIENT_ID;
 if (!token || !clientId) throw new Error('Missing DISCORD_TOKEN or DISCORD_CLIENT_ID. Copy .env.example to .env.');
+if (!/^\d{17,20}$/.test(clientId)) throw new Error('DISCORD_CLIENT_ID must be the numeric Application ID from Discord Developer Portal, not a token or Railway project ID.');
+if (process.env.DISCORD_GUILD_ID && !/^\d{17,20}$/.test(process.env.DISCORD_GUILD_ID)) throw new Error('DISCORD_GUILD_ID must be the numeric Discord server ID with Developer Mode enabled.');
 const dbPath = process.env.CPL_DATA_FILE ?? './cpl-data.json';
 const initial: Db = { ranks: {}, teams: [], lfg: [], warnings: {}, config: {} };
 let db: Db = existsSync(dbPath) ? { ...initial, ...JSON.parse(readFileSync(dbPath, 'utf8')) } : initial;
