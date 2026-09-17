@@ -1,0 +1,10 @@
+{
+  "name": "cpl-discord-bot-1",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Custom CPL Competitive Play League Discord bot",
+  "type": "module",
+  "scripts": { "dev": "tsx watch src/index.ts", "start": "tsx src/index.ts", "build": "tsc" },
+  "dependencies": { "discord.js": "^14.16.3", "dotenv": "^16.4.7" },
+  "devDependencies": { "@types/node": "^22.10.2", "tsx": "^4.19.2", "typescript": "^5.7.2" }
+}
